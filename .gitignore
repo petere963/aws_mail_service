@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/*
+.jshintrc
+.env
+.snyk
+.idea/*
+/.idea/
+.idea/
+target/
+dependency-reduced-pom.xml
+ucm-dev.yml
+obb_contact_details.json
