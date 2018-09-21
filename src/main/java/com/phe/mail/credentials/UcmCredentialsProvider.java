@@ -5,8 +5,7 @@ import com.amazonaws.auth.AWSCredentialsProvider;
 
 public class UcmCredentialsProvider implements AWSCredentialsProvider {
 
-    private final static String accessKeyId = "AKIAIV7TN27E3UW4ZLJA";
-    private final static String secretAccessKey = "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";
+
 
 
 

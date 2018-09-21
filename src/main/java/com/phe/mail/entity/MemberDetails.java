@@ -1,8 +1,5 @@
 package com.phe.mail.entity;
 
-/**
- * Created by peter.earle on 13/06/2018.
- */
 public class MemberDetails {
     private String name;
     private String email;
