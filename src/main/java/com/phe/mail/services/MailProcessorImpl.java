@@ -31,8 +31,9 @@ public class MailProcessorImpl implements MailProcessor {
 
         LOGGER.info("forwarding following email to all OBB");
         try {
-            LOGGER.info(mimeMessage.getSubject());
-            LOGGER.info(mimeMessage.getContent());
+            LOGGER.info("Subject : " + mimeMessage.getSubject());
+            InternetAddress[] from = (InternetAddress[])mimeMessage.getFrom();
+            LOGGER.info("From : " + from[0].getAddress());
         } catch (Exception e) {
             LOGGER.error("Invalid Message " + email);
             return;
