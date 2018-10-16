@@ -43,6 +43,14 @@ public class MailProcessorImpl implements MailProcessor {
     }
 
     private void forwardEmailToMember(MemberDetails memberDetails, MimeMessage mimeMessage) {
+
+        if((memberDetails.getEmail() == null)
+            || memberDetails.getEmail().isEmpty()
+            || memberDetails.getEmail().equalsIgnoreCase("none")) {
+            LOGGER.info("No email address for member " + memberDetails.getName());
+            return;
+        }
+
         try {
             mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(memberDetails.getEmail()));
             new MessageSender(transportFactory, configuration).send(mimeMessage);

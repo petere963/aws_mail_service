@@ -38,6 +38,12 @@ public class PersistenceService {
 
         List<MemberDetails> memberDetails = new ArrayList<>();
         for(MemberDetails md : memberDetailsList.getMemberDetails()) {
+
+            // Work around for obb
+            if((md.getBandId() == null) || md.getBandId().isEmpty()) {
+                md.withBandId("obb");
+            }
+
             if(md.getBandId().equalsIgnoreCase(bandId)){
                 memberDetails.add(md);
             }
