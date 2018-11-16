@@ -1,6 +1,7 @@
 package com.phe.mail.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.phe.mail.configuration.ServiceConfiguration;
 import com.phe.mail.entity.MemberDetails;
 import com.phe.mail.entity.MemberDetailsList;
 import org.apache.commons.lang3.StringUtils;
@@ -13,8 +14,12 @@ import java.util.List;
 
 public class PersistenceService {
 
-    private final static String PERSISTENCE_FILE = "obb_contact_details.json";
+    private final String PERSISTENCE_FILE;
     private ObjectMapper objectMapper = new ObjectMapper();
+
+    public PersistenceService(ServiceConfiguration configuration) {
+        PERSISTENCE_FILE = configuration.getMemberDetailsFile();
+    }
 
 
     public MemberDetailsList getDetailsFromFile(String bandId) throws Exception {

@@ -2,6 +2,7 @@ package com.phe.mail.services;
 
 import com.phe.mail.configuration.ServiceConfiguration;
 import com.phe.mail.factory.TransportFactory;
+import org.apache.log4j.Logger;
 
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
@@ -10,6 +11,7 @@ public class MessageSender {
 
     private final TransportFactory transportFactory;
     private final ServiceConfiguration configuration;
+    private static final Logger LOGGER = Logger.getLogger(MessageSender.class);
 
     public MessageSender(TransportFactory transportFactory, ServiceConfiguration configuration) {
         this.transportFactory = transportFactory;
@@ -30,8 +32,8 @@ public class MessageSender {
             transport.sendMessage(msg, msg.getAllRecipients());
         }
         catch (Exception ex) {
-            System.out.println("The email was not sent.");
-            System.out.println("Error message: " + ex.getMessage());
+            LOGGER.info("The email was not sent.");
+            LOGGER.info("Error message: " + ex.getMessage());
         }
     }
 }

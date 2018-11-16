@@ -34,15 +34,15 @@ public class MailServer extends Application<ServiceConfiguration> {
         TransportFactory transportFactory = new TransportFactoryImpl();
 
         S3FileService s3FileService = new S3FileServiceImpl(OTLEYBRASSBAND);
-        MailProcessor mailProcessor = new MailProcessorImpl(transportFactory, getMemberDetails(OBB), configuration);
+        MailProcessor mailProcessor = new MailProcessorImpl(transportFactory, getMemberDetails(OBB, configuration), configuration);
         MessageController controller = new MessageController(s3FileService, mailProcessor, configuration);
 
         new Thread(controller).start();
     }
 
-    private MemberDetailsList getMemberDetails(String bandId) {
+    private MemberDetailsList getMemberDetails(String bandId, ServiceConfiguration configuration) {
         try {
-            return new PersistenceService().getDetailsFromFile(bandId);
+            return new PersistenceService(configuration).getDetailsFromFile(bandId);
         } catch (Exception e) {
             LOGGER.error(e);
             throw new RuntimeException("Unable to load member details");

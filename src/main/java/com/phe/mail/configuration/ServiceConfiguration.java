@@ -13,6 +13,7 @@ public class ServiceConfiguration extends Configuration{
     private String smtpPassword;
     private String smtpHost;
     private long sleepMillis;
+    private String memberDetailsFile;
 
     public String getAwsCsmEnabled() {
         return awsCsmEnabled;
@@ -76,5 +77,13 @@ public class ServiceConfiguration extends Configuration{
 
     public void setSleepMillis(long sleepMillis) {
         this.sleepMillis = sleepMillis;
+    }
+
+    public String getMemberDetailsFile() {
+        return memberDetailsFile;
+    }
+
+    public void setMemberDetailsFile(String memberDetailsFile) {
+        this.memberDetailsFile = memberDetailsFile;
     }
 }
