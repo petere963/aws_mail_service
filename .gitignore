@@ -10,3 +10,4 @@ target/
 dependency-reduced-pom.xml
 ucm-dev.yml
 obb_contact_details.json
+obb_contact_details_TEST.json
